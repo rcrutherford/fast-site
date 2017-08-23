@@ -1,5 +1,6 @@
 var express = require('express')
 var bodyParser = require("body-parser")
+var queryParser = require("query-parser")
 var request = require('request')
 var path = require('path')
 var app = express()
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
+//in app routes
 //get all
 app.get('/', function (req, res) {
 	request({ url: "http://localhost:3001/Employees", method: "GET"}, function (error, response, body) {
