@@ -1,0 +1,28 @@
+
+mixin listitems(arrEmps)
+	each item in arrEmps
+		li.employee 
+			.name= item.fname+" "+item.lname 
+			form(action="http://localhost:3002/del/"+ item.id method="GET")
+				button.del(type="submit" onclick="return confirm('Delete Employee "+item.fname+" "+item.lname+"?')")  Delete
+			button(type="submit" onclick="return alert('VIEW: "+item.fname+" "+item.lname+"')") View
+			form(id="updateform"+item.id class="hidden" action="http://localhost:3002/put/"+ item.id method="GET")
+				input(id="fname" name="fname" value=item.fname )
+				input(id="lname" name="lname" value=item.lname )
+				button(id="update" type="submit") Update
+			button(id="updatebutton"+item.id onclick="unHideForm("+item.id+")") Update
+			
+
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		h3 List All Employees
+		ul.employees
+			+listitems(results)
+		script(src='/javascripts/script.js')
+
+
+		

@@ -1,0 +1,24 @@
+body {
+	font-family: sans-serif;
+}
+.employees {
+	list-style: none;
+}
+.employee {
+	display: flex;
+	border-bottom: 1px black solid;
+	margin-right: 100px;
+}
+.name {
+	width: 200px;
+	margin: 10px;
+}
+button {
+	margin: 10px;
+}
+input {
+	margin-left: 5px;
+}
+.hidden {
+	display: none;
+}
