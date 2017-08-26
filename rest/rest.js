@@ -41,19 +41,23 @@ function getEmployees (req, res, next) {
 function getEmployee (req, res, next) {
 	var thisid = parseInt(req.params.id)
 	console.log('rest: get: '+thisid)
-	for (var i=0;arrEmployees.length-1;i++) {
+	for (var i=0;i<=arrEmployees.length-1;i++) {
 		if (arrEmployees[i].id == thisid ) {
 			res.send(arrEmployees[i])
+			console.log(arrEmployees[i])
 			break
 		}
 	}
-	
+	if (i!=thisid) {
+		res.send('not found')
+	}
 }
+
 function putEmployees (req, res, next) {
 	body = req.body
 	console.log('rest: put: '+req.body)
 	var thisid = parseInt(req.params.id)
-	for (var i=0;arrEmployees.length-1;i++) {
+	for (var i=0;i<=arrEmployees.length-1;i++) {
 		if (arrEmployees[i].id == thisid ) {
 			arrEmployees[i].fname = body.fname
 			arrEmployees[i].lname = body.lname
@@ -61,8 +65,8 @@ function putEmployees (req, res, next) {
 			break
 		}
 	}
-	
 }
+
 function delEmployees (req, res, next) {
 	var thisid = parseInt(req.params.id)
 	console.log('rest: delete: '+thisid)
@@ -73,12 +77,12 @@ function delEmployees (req, res, next) {
 				res.send(arrEmployees)
 				break
 			}
-		}
+		} 
 	}
 	else {
 		res.send(arrEmployees)
 	}
-} 
+}
 
 //routes
 restserver.post('/Employees', postEmployees) 
